@@ -44,7 +44,9 @@
 .inputContainer {
     display: flex;
     flex-direction: row;
-    margin-left: 5%;
+    margin: 0 0 2% 3%;
+    align-items:center;
+    justify-content: flex-start;
 }
 
 h2{
@@ -53,10 +55,26 @@ h2{
 }
 
 .item {
-    padding: 1%;
+    padding: 2%;
 }
 .buttonItem{
     height: 5px;
+}
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.map {
+    margin-left: 10%;
+}
+
+.boxColour {
+    width: 200%;
+    height: 50vh;
+    background: #cfbffc;
 }
 
 /*.dropdown {

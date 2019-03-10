@@ -18,6 +18,9 @@ import TextField from '@material-ui/core/TextField';
 import './Find.css';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import Geocode from "react-geocode";
+
+Geocode.enableDebug();
 
 const styles = theme => ({
     root: {
@@ -50,10 +53,13 @@ export default class Find extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            padType: null,
+            padType: '',
             locationName: 'hai',
+            location: '',
             cost: null,
             labelWidth: 0,
+            radius: null,
+            submitted: false,
         }
         this.displayType = this.displayType.bind(this);
     }
@@ -66,9 +72,18 @@ export default class Find extends Component {
     }
 
     onSubmit = () => {
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
-        const url = "http://127.0.0.1:5000/api/find"
-            axios.get(url).then(function (response) {
+        this.setState({ submitted: true });
+        const url = "http://127.0.0.1:5000/api/find";
+        axios.get(url, {
+            params: {
+                type: this.state.padType,
+                cost: this.state.cost,
+                lat: this.getLat(this.state.location),
+                lng: this.getLng(this.state.location),
+                radius: this.state.radius
+            }
+        })
+            .then(function (response) {
                 console.log(response.data.rows)
             }).catch(function (error) {
                 if (error.response) {
@@ -84,11 +99,33 @@ export default class Find extends Component {
             });
     }
 
+    getLat(address) {
+        Geocode.fromAddress(address).then(
+            response => {
+                return response.results[0].geometry.location.lat;
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    }
+
+    getLng(address) {
+        Geocode.fromAddress(address).then(
+            response => {
+                return response.results[0].geometry.location.lng;
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    }
+
     render() {
         const { classes } = this.props;
 
         return (
-            <div>
+            <div className="pageContainer">
                 <h2>FIND FEMININE HYGIENE PRODUCTS NEAR YOU!</h2>
                 <div className="inputContainer">
                     <div className="item"><FormControl>
@@ -129,7 +166,7 @@ export default class Find extends Component {
                             <FormHelperText>Required</FormHelperText>
                         </FormControl>
                     </div>
-                    <div className="item" height="3px">
+                    <div className="item">
                         <TextField
                             id="outlined-dense"
                             label="Address"
@@ -140,17 +177,44 @@ export default class Find extends Component {
                             variant="outlined"
                         />
                     </div>
+                    <div className="item">
+                        <FormControl>
+                            <InputLabel htmlFor="age-native-required">Radius</InputLabel>
+                            <Select
+                                native
+                                value={this.state.radius}
+                                onChange={this.handleChange('radius')}
+                                name="radius"
+                                inputProps={{
+                                    id: 'age-native-required',
+                                }}
+                            >
+                                <option value="" />
+                                <option value={0.5}>0.5 km</option>
+                                <option value={1}>1 km</option>
+                                <option value={2}>2 km</option>
+                            </Select>
+                            <FormHelperText>Required</FormHelperText>
+                        </FormControl>
+                    </div>
+
+                    
 
                     <Button onClick={this.onSubmit} height="2em" variant="contained" color="secondary">
                         Submit
                  </Button>
                 </div>
-                <SimpleMap />
+                <div>
+                    {this.state.submitted ? (
+                        <div className= "map"><SimpleMap /></div>
+                    ) : (
+                            <div className="boxColour"></div>   
+                    )}
+                
+                    
+                </div>
             </div>
         )
     }
 }
 
-Find.propTypes = {
-    classes: PropTypes.object.isRequired,
-};

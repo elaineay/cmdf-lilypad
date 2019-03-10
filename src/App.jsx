@@ -17,9 +17,6 @@ class App extends Component {
             <header className="App-header">
             </header>
             <Find />
-            <body>
-              something
-              </body>
       </div>
     );
   }
