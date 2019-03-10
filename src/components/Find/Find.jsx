@@ -17,6 +17,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import './Find.css';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 const styles = theme => ({
     root: {
@@ -46,11 +47,12 @@ const styles = theme => ({
 });
 
 export default class Find extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             padType: null,
-            name: 'hai',
+            locationName: 'hai',
             cost: null,
             labelWidth: 0,
         }
@@ -64,6 +66,41 @@ export default class Find extends Component {
         this.setState({ type: type });
     }
 
+    onSubmit = () => {
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const url = "http://127.0.0.1:5000/api/find"
+            axios.get(url).then(function (response) {
+                console.log(response.data.rows)
+            }).catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.headers);
+                }
+                else if (error.request) {
+                    console.log(error.request);
+                }
+                else {
+                    console.log(error.message);
+                }
+                console.log(error.config);
+            });
+    }
+
+    onSubmit1(e) {
+        console.log('hello')
+        e.preventDefault();
+        const serverport = {
+            name: this.state.name,
+            port: this.state.port
+        }
+        axios.post('http://127.0.0.1:5000/api/add', serverport)
+            .then(res => console.log(res.data));
+
+        this.setState({
+            name: '',
+            port: ''
+        });
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -72,62 +109,62 @@ export default class Find extends Component {
                 <h2>FIND FEMININE HYGIENE PRODUCTS NEAR YOU!</h2>
                 <div className="inputContainer">
                     <div className="item">
-                    <FormControl>
-                    <InputLabel htmlFor="age-native-required">Type</InputLabel>
-                    <Select
-                        native
-                        value={this.state.padType}
-                        onChange={this.handleChange('padType')}
-                        name="padType"
-                        inputProps={{
-                            id: 'age-native-required',
-                        }}
-                    >
-                        <option value="" />
-                        <option value={true}>Pads</option>
-                        <option value={false}>Tampons</option>
-                    </Select>
+                        <FormControl>
+                            <InputLabel htmlFor="age-native-required">Type</InputLabel>
+                            <Select
+                                native
+                                value={this.state.padType}
+                                onChange={this.handleChange('padType')}
+                                name="padType"
+                                inputProps={{
+                                    id: 'age-native-required',
+                                }}
+                            >
+                                <option value="" />
+                                <option value={true}>Pads</option>
+                                <option value={false}>Tampons</option>
+                            </Select>
                             <FormHelperText>Required</FormHelperText>
                         </FormControl>
                     </div>
 
                     <div className="item">
 
-                <FormControl>
-                    <InputLabel htmlFor="age-native-required">Cost</InputLabel>
-                    <Select
-                        native
-                        value={this.state.cost}
-                        onChange={this.handleChange('cost')}
-                        name="cost"
-                        inputProps={{
-                            id: 'age-native-required',
-                        }}
-                    >
-                        <option value="" />
-                        <option value={true}>Free</option>
-                        <option value={false}>Purchase</option>
-                    </Select>
-                    <FormHelperText>Required</FormHelperText>
+                        <FormControl>
+                            <InputLabel htmlFor="age-native-required">Cost</InputLabel>
+                            <Select
+                                native
+                                value={this.state.cost}
+                                onChange={this.handleChange('cost')}
+                                name="cost"
+                                inputProps={{
+                                    id: 'age-native-required',
+                                }}
+                            >
+                                <option value="" />
+                                <option value={true}>Free</option>
+                                <option value={false}>Purchase</option>
+                            </Select>
+                            <FormHelperText>Required</FormHelperText>
                         </FormControl>
                     </div>
-                   <div className="item" height="3px">
-                <TextField
-                    id="outlined-dense"
-                    label="Address"
-                    placeholder="Address"
-                    margin="dense"
-                    helperText="Required"
-                    margin="normal"
-                    variant="outlined"
+                    <div className="item" height="3px">
+                        <TextField
+                            id="outlined-dense"
+                            label="Address"
+                            placeholder="Address"
+                            margin="dense"
+                            helperText="Required"
+                            margin="normal"
+                            variant="outlined"
                         />
                     </div>
 
-                    <Button height="2em" variant="contained" color="secondary">
+                    <Button onClick={this.onSubmit} height="2em" variant="contained" color="secondary">
                         Submit
                  </Button>
                 </div>
-                
+
                 <SimpleMap />
             </div>
         )

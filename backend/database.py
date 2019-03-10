@@ -5,7 +5,7 @@ USER = 'fxlpgmfa'
 PASSWORD = '5DxwRR6dUZ-7Oxyblm-j1xx6rDsRESYy'
 HOST = 'isilo.db.elephantsql.com'
 SELECT_SQL = ''' select * from locations '''
-INSERT_SQL = ''' insert into locations values('{type}', '{cost}', '{lat}', '{lng}', default)'''
+INSERT_SQL = ''' insert into locations values(default, '{type}', '{cost}', '{lat}', '{lng}', '{name}')'''
 
 
 def get_connection():
