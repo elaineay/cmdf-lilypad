@@ -21,8 +21,13 @@ def find_locations():
     lng = args['lng']
     radius = args['radius']
     with database.get_connection() as conn:
-        rows = database.get_locations(conn, type, cost, lat, lng, radius)
-    return jsonify(status=status.HTTP_200_OK, rows=rows) #k=v
+        rows = database.get_locations(conn, type, cost)
+
+    user_locn = (lat,lng)
+    lilypadManager = LilypadManager(rows)
+    results = lilypadManager.get_within_radius(user_locn, radius)
+
+    return jsonify(status=status.HTTP_200_OK, rows=results) #k=v
 
 
 @app.route('/api/add', methods=['POST'])
