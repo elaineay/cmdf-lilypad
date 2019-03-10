@@ -1,6 +1,6 @@
-class LilytypeManager:
+class LilypadManager:
     def __init__(self, allLilytypes):
-        self.all_lily_types = #populate list with DB data
+        self.all_lilypads = #populate list with DB data
 
     def get_nearest_four(user_locn, radius, type, free):
         filtered_list = filter_type_and_cost(get_within_radius(user_locn, radius), type, free);
@@ -11,19 +11,19 @@ class LilytypeManager:
             return filtered_list
 
     def get_within_radius(user_locn, radius):
-        lilytypes_within_radius = []
+        lilypads_within_radius = []
 
-        for lp in self.all_lily_types:
+        for lp in self.all_lilypads:
             if SphericalGeometry.distance(user_locn, radius) <= radius:
-                lilytypes_within_radius.append(lp)
+                lilypads_within_radius.append(lp)
 
-        return lilytypes_within_radius
+        return lilypads_within_radius
 
-    def filter_type_and_cost(lilytypes_within_radius, type, free):
-        lilytypes_with_type = []
+    def filter_type_and_cost(lilypads_within_radius, type, free):
+        lilypads_with_type = []
 
-        for lp in lilytypes_within_radius:
+        for lp in lilypads_within_radius:
             if lp.type == type and lp.free == free:
-                lilytypes_with_type.append(lp)
+                lilypads_with_type.append(lp)
 
-        return lilytypes_with_type
+        return lilypads_with_type
