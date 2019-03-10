@@ -1,9 +1,9 @@
-class LilypadManager:
-    def __init__(self, allLilyPads):
-        self.all_lily_pads = #populate list with DB data
+class LilytypeManager:
+    def __init__(self, allLilytypes):
+        self.all_lily_types = #populate list with DB data
 
-    def get_nearest_four(user_locn, radius, pad, free):
-        filtered_list = filter_type_and_cost(get_within_radius(user_locn, radius), pad, free);
+    def get_nearest_four(user_locn, radius, type, free):
+        filtered_list = filter_type_and_cost(get_within_radius(user_locn, radius), type, free);
 
         if len(filtered_list) >= 4:
             return filtered_list[0:4]
@@ -11,19 +11,19 @@ class LilypadManager:
             return filtered_list
 
     def get_within_radius(user_locn, radius):
-        lilypads_within_radius = []
+        lilytypes_within_radius = []
 
-        for lp in self.all_lily_pads:
+        for lp in self.all_lily_types:
             if SphericalGeometry.distance(user_locn, radius) <= radius:
-                lilypads_within_radius.append(lp)
+                lilytypes_within_radius.append(lp)
 
-        return lilypads_within_radius
+        return lilytypes_within_radius
 
-    def filter_type_and_cost(lilypads_within_radius, pad, free):
-        lilypads_with_type = []
+    def filter_type_and_cost(lilytypes_within_radius, type, free):
+        lilytypes_with_type = []
 
-        for lp in lilypads_within_radius:
-            if lp.pad == pad and lp.free == free:
-                lilypads_with_type.append(lp)
+        for lp in lilytypes_within_radius:
+            if lp.type == type and lp.free == free:
+                lilytypes_with_type.append(lp)
 
-        return lilypads_with_type
+        return lilytypes_with_type
