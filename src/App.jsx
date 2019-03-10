@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 
 import Add from './components/Add';
-import Find from './components/Find';
+import Find from './components/Find/Find.jsx';
+import SimpleMap from './components/SimpleMap.jsx';
 import Header from './components/Header';
 
 
@@ -14,11 +15,8 @@ class App extends Component {
         <div className="App">
         <Header/>
             <header className="App-header">
-                <Add />
-                <Find />
-
-            </header>    
-
+            </header>
+            <Find />
             <body>
               something
               </body>

@@ -26,10 +26,11 @@ def add_location():
     cost = args['cost']
     lat = args['lat']
     lng = args['lng']
+    name = args['name']
 
     if lat and lng:
         with database.get_connection() as conn:
-            database.insert_location(conn, type, cost, lat, lng)
+            database.insert_location(conn, type, cost, lat, lng, name)
     return jsonify(status=status.HTTP_200_OK)
 
 

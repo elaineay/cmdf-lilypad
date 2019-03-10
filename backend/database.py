@@ -5,7 +5,7 @@ USER = 'fxlpgmfa'
 PASSWORD = '5DxwRR6dUZ-7Oxyblm-j1xx6rDsRESYy'
 HOST = 'isilo.db.elephantsql.com'
 SELECT_SQL = ''' select * from locations '''
-INSERT_SQL = ''' insert into locations values('{type}', '{cost}', '{lat}', '{lng}', default)'''
+INSERT_SQL = ''' insert into locations values(default, '{type}', '{cost}', '{lat}', '{lng}', '{name}')'''
 
 
 def get_connection():
@@ -24,7 +24,7 @@ def get_location(connection):
     return rows
 
 
-def insert_location(connection, type, cost, lat, lng):
+def insert_location(connection, type, cost, lat, lng, name):
     with connection.cursor() as cursor:
-        cursor.execute(INSERT_SQL.format(type=type, cost=cost, lat=lat, lng=lng))
+        cursor.execute(INSERT_SQL.format(type=type, cost=cost, lat=lat, lng=lng, name=name))
         connection.commit()
