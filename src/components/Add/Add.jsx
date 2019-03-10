@@ -30,6 +30,7 @@ class Add extends Component {
 
     handleOpen = () => {
         this.setState({ isModalOpen: true });
+            this.setState({showMap : false});
     }
 
     handleClose = () => {
