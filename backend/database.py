@@ -24,7 +24,7 @@ def get_location(connection):
     return rows
 
 
-def insert_location(connection, type, cost, lat, lng):
+def insert_location(connection, type, cost, lat, lng, name):
     with connection.cursor() as cursor:
-        cursor.execute(INSERT_SQL.format(type=type, cost=cost, lat=lat, lng=lng))
+        cursor.execute(INSERT_SQL.format(type=type, cost=cost, lat=lat, lng=lng, name=name))
         connection.commit()
