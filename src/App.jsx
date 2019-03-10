@@ -14,7 +14,9 @@ class App extends Component {
         <div className="App">
         <Header/>
             <header className="App-header">
-            <Add/>
+                <Add />
+                <Find />
+
             </header>
             <body>
               something
