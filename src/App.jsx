@@ -4,16 +4,22 @@ import './App.css';
 
 import Add from './components/Add';
 import Find from './components/Find';
+import SimpleMap from './components/SimpleMap';
+import Header from './components/Header';
+
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-
+        <Header/>
             <header className="App-header">
             <Add/>
             </header>
-            <body>something</body>
+            <body>
+              <SimpleMap/>
+              something
+              </body>
       </div>
     );
   }
