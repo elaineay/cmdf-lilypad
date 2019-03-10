@@ -4,9 +4,8 @@ import './App.css';
 
 import Add from './components/Add';
 import Find from './components/Find';
-import SimpleMap from './components/SimpleMap';
 import Header from './components/Header';
-import SearchForm from './components/SearchForm';
+
 
 
 class App extends Component {
@@ -15,11 +14,12 @@ class App extends Component {
         <div className="App">
         <Header/>
             <header className="App-header">
-            <Add/>
-            </header>
-            <body>         
-<SearchForm/>
-              <SimpleMap/>
+                <Add />
+                <Find />
+
+            </header>    
+
+            <body>
               something
               </body>
       </div>
