@@ -6,17 +6,19 @@ import Add from './components/Add';
 import Find from './components/Find';
 import SimpleMap from './components/SimpleMap';
 import Header from './components/Header';
+import SearchForm from './components/SearchForm';
 
 
 class App extends Component {
-  render() {
+  render() {  
     return (
         <div className="App">
         <Header/>
             <header className="App-header">
             <Add/>
             </header>
-            <body>
+            <body>         
+<SearchForm/>
               <SimpleMap/>
               something
               </body>
