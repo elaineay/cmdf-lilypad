@@ -62,6 +62,7 @@ export default class Find extends Component {
             submitted: false,
         }
         this.displayType = this.displayType.bind(this);
+        this.setState = this.setState.bind(this);
     }
 
     handleChange = name => event => {
@@ -111,14 +112,22 @@ export default class Find extends Component {
     }
 
     getLng(address) {
+        console.log('hi')
         Geocode.fromAddress(address).then(
             response => {
+                console.log('ADD')
+                console.log(response.results[0].geometry.location.lng)
                 return response.results[0].geometry.location.lng;
             },
             error => {
                 console.error(error);
             }
         );
+    }
+
+    setLocation(e) {
+        setTimeout(function () { this.setState({ location: e.target.value }); }, 5000);
+        
     }
 
     render() {
@@ -175,6 +184,7 @@ export default class Find extends Component {
                             helperText="Required"
                             margin="normal"
                             variant="outlined"
+                            onChange={this.setLocation}
                         />
                     </div>
                     <div className="item">
