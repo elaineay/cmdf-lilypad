@@ -1,0 +1,44 @@
+.container { 
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.submitForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.map{
+    margin: 50px;
+}
+
+.dialogContainer{
+    max-width: lg;
+    fullWidth: true;
+}
+.dialog{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+}
+
+.box{
+    align-self: center; 
+}
+
+.bigForm{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 20px;
+}
+
+.smallForm{
+    display:flex;
+    width: 60%;
+    justify-content: space-around;
+}
+
+.dialogContent {
+    min-width: 100px;
+}

@@ -1,8 +1,11 @@
+
+
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
- 
+import Marker from 'google-map-react';
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
+
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
@@ -11,7 +14,7 @@ class SimpleMap extends Component {
     },
     zoom: 11
   };
-    
+
   render() {
     return (
       // Important! Always set the container height explicitly
@@ -21,6 +24,10 @@ class SimpleMap extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
+          {/* <Marker
+            onClick={this.onMarkerClick}
+            name={'Kenyatta International Convention Centre'}
+          /> */}
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
@@ -31,5 +38,5 @@ class SimpleMap extends Component {
     );
   }
 }
- 
+
 export default SimpleMap;
