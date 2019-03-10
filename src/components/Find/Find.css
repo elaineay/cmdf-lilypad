@@ -1,0 +1,64 @@
+.btn-success {
+    background-color: #b25ed7;
+    border-color: #c877eb;
+}
+
+.btn-sucess.dropdown-toggle {
+    background-color: #b25ed7;
+    border-color: #c877eb;
+}
+
+.btn-success:hover {
+    background-color: #b25ed7;
+    border-color: #c877eb;
+}
+
+.show > .btn-success.dropdown-toggle::after focus {
+    box-shadow: 0 0 0 .2rem rgba(148, 72, 180, 0.5);
+}
+
+.show > .btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #b25ed7;
+    border-color: #c877eb;
+}
+
+.btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #b25ed7;
+    border-color: #c877eb;
+}
+
+.btn-success.focus, .btn-success:focus {
+    box-shadow: 0 0 0 .2rem rgba(148, 72, 180, 0.5);
+}
+
+.show > .btn-success.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(148, 72, 180,.5);
+}
+
+.searchBox {
+    max-height: 5% !important;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+h2{
+    text-align: left;
+    margin-left: 5%;
+}
+
+.item {
+    padding: 1%;
+}
+.buttonItem{
+    height: 5px;
+}
+
+/*.dropdown {
+    background-color: #b25ed7;
+}*/
