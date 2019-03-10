@@ -17,7 +17,6 @@ class App extends Component {
             <Add/>
             </header>
             <body>
-              <SimpleMap/>
               something
               </body>
       </div>
