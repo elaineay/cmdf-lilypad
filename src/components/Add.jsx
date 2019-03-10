@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Jumbotron, Grid, Row, Col, Image, Button } from 'react-bootstrap';
+//import './Add.css';
 
 class Add extends Component {
     constructor(props) {
