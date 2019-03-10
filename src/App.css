@@ -9,10 +9,9 @@
   pointer-events: none;
 }
 
-<<<<<<< HEAD
 .App-item{
-  margin-top: 50px;
-=======
+  margin-top: 50px;}
+  
 .App-header {
   background-color: #282c34;
   min-height: 10vh;
@@ -23,7 +22,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
->>>>>>> eac7f7608ba4d1a25eb7b6a5eef7f86d5e2e00b2
 }
 
 

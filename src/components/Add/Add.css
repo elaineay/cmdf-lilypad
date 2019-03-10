@@ -12,10 +12,7 @@
     margin: 50px;
 }
 
-.dialogContainer{
-    max-width: lg;
-    fullWidth: true;
-}
+
 .dialog{
     display: flex;
     flex-direction: column;
