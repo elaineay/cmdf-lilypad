@@ -14,8 +14,14 @@ def hello_world():
 
 @app.route('/api/find', methods=['GET'])
 def find_locations():
+    args = request.args
+    type = args['type']
+    cost = args['cost']
+    lat = args['lat']
+    lng = args['lng']
+    radius = args['radius']
     with database.get_connection() as conn:
-        rows = database.get_location(conn)
+        rows = database.get_locations(conn, type, cost, lat, lng, radius)
     return jsonify(status=status.HTTP_200_OK, rows=rows) #k=v
 
 
